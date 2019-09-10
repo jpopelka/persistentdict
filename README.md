@@ -5,13 +5,14 @@ Yet another \[1\] dictionary backed by Redis DB.
 We use Redis` 'hash' type \[2\] and store whole dictionary in one hash.
 
 Usage:
+
 ```python
 from persistentdict import PersistentDict
 
 db = PersistentDict(hash_name="my-persistent-dict")
 
 # add key to the db with a value
-db[key] = value
+db['key'] = value
 
 # show whole dictionary
 print(db)
@@ -25,7 +26,7 @@ if key in db:
   do_something(key)
 
 # delete key from db
-del db[key]
+del db['key']
 ```
 
 \[1\] Alternatives: [persistent-dict](https://github.com/richardARPANET/persistent-dict), [durabledict](https://github.com/disqus/durabledict/)
