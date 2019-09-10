@@ -1,8 +1,8 @@
 # persistentdict
 
-Yet another [1] dictionary backed by Redis DB.
+Yet another \[1\] dictionary backed by Redis DB.
 
-We use Redis` 'hash' type [2] and store whole dictionary in one hash.
+We use Redis` 'hash' type \[2\] and store whole dictionary in one hash.
 
 Usage:
 ```python
@@ -28,5 +28,6 @@ if key in db:
 del db[key]
 ```
 
-[1] Alternatives: [persistent-dict](https://github.com/richardARPANET/persistent-dict), [durabledict](https://github.com/disqus/durabledict/)
-[2] https://redis.io/topics/data-types-intro#hashes is basically Python's dict, but values can be strings only, so we use json serialization
+\[1\] Alternatives: [persistent-dict](https://github.com/richardARPANET/persistent-dict), [durabledict](https://github.com/disqus/durabledict/)
+
+\[2\] https://redis.io/topics/data-types-intro#hashes is basically Python's dict, but values can be strings only, so we use json serialization
