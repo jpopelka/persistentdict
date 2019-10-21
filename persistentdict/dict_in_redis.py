@@ -88,7 +88,7 @@ class PersistentDict:
         """
         value = self.db.hget(self.hash, key)
         if value is None:
-            return None
+            raise KeyError(f"Key '{key}' does not exist.")
         return json.loads(value)
 
     def __len__(self):
