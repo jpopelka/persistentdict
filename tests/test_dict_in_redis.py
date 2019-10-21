@@ -39,3 +39,7 @@ class TestPersistentDict:
         assert db.keys() == dictionary.keys()
         db.clear()
         assert len(db) == 0
+
+    def test_should_raise_key_error_if_key_is_not_in_db(self, db, dictionary):
+        with raises(KeyError, match="Key 'unknown' does not exist."):
+            db['unknown']
