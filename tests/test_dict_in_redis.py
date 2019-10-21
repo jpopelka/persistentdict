@@ -1,6 +1,6 @@
 from uuid import uuid4
 
-from pytest import fixture
+from pytest import fixture, raises
 
 from persistentdict.dict_in_redis import PersistentDict
 
