@@ -39,3 +39,16 @@ class TestPersistentDict:
         assert db.keys() == dictionary.keys()
         db.clear()
         assert len(db) == 0
+    
+    def test_should_get_none_if_no_default(self, db, dictionary):
+        actual = db.get('unknown')
+        assert actual is None
+    
+    def test_should_get_default_if_no_key(self, db, dictionary):
+        actual = db.get('unknown', 'default')
+        assert actual == 'default'
+    
+    def test_should_get_value(self, db, dictionary):
+        db['key'] = 'value'
+        actual = db.get('key')
+        assert actual == 'value'
