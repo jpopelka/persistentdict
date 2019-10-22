@@ -140,6 +140,21 @@ class PersistentDict:
         for key in self.keys():
             self.__delitem__(key)
 
+    def get(self, key, default=None):
+        """Get info to key or default, if key not present.
+
+        Usage:
+        xyz = PersistentDict().get(key, default)
+
+        :param key: can be int or string
+        :param default: can be anything, default is None
+        :return: value assigned to the key or default if key not in db
+        """
+        value = self.db.hget(self.hash, key)
+        if value is None:
+            return default
+        return json.loads(value)
+
     def get_all(self):
         """
         Return whole dictionary
