@@ -1,6 +1,6 @@
 from uuid import uuid4
 
-from pytest import fixture
+from pytest import fixture, raises
 
 from persistentdict.dict_in_redis import PersistentDict
 
@@ -39,6 +39,10 @@ class TestPersistentDict:
         assert db.keys() == dictionary.keys()
         db.clear()
         assert len(db) == 0
+
+    def test_should_raise_key_error_if_key_is_not_in_db(self, db, dictionary):
+        with raises(KeyError, match="Key 'unknown' does not exist."):
+            db['unknown']
     
     def test_should_get_none_if_no_default(self, db, dictionary):
         actual = db.get('unknown')
