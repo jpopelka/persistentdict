@@ -7,7 +7,7 @@ We use Redis` 'hash' type \[2\] and store whole dictionary in one hash.
 Usage:
 
 ```python
-from persistentdict import PersistentDict
+from persistentdict.dict_in_redis import PersistentDict
 
 db = PersistentDict(hash_name="my-persistent-dict")
 
@@ -28,6 +28,13 @@ if key in db:
 # delete key from db
 del db['key']
 ```
+
+Installation:
+
+```shell
+pip3 install persistentdict
+```
+
 
 \[1\] Alternatives: [persistent-dict](https://github.com/richardARPANET/persistent-dict), [durabledict](https://github.com/disqus/durabledict/)
 
