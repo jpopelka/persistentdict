@@ -52,7 +52,12 @@ class PersistentDict:
     """
 
     def __init__(
-        self, hash_name="dict-in-redis", redis_host=None, redis_port=None, redis_db=None
+        self,
+        hash_name="dict-in-redis",
+        redis_host=None,
+        redis_port=None,
+        redis_db=None,
+        redis_password=None,
     ):
         """
 
@@ -62,6 +67,7 @@ class PersistentDict:
             host=redis_host or getenv("REDIS_SERVICE_HOST", "localhost"),
             port=redis_port or getenv("REDIS_SERVICE_PORT", "6379"),
             db=redis_db or 1,  # 0 is used by Celery
+            password=redis_password or getenv("REDIS_PASSWORD"),
             decode_responses=True,
         )
         self.hash = hash_name
