@@ -51,15 +51,23 @@ class PersistentDict:
         can be strings only, so we use json serialization
     """
 
-    def __init__(self, hash_name="dict-in-redis"):
+    def __init__(
+        self,
+        hash_name="dict-in-redis",
+        redis_host=None,
+        redis_port=None,
+        redis_db=None,
+        redis_password=None,
+    ):
         """
 
         :param hash_name: name of the dictionary/hash [1] we store all the info in
         """
         self.db = Redis(
-            host=getenv("REDIS_SERVICE_HOST", "localhost"),
-            port=getenv("REDIS_SERVICE_PORT", "6379"),
-            db=1,  # 0 is used by Celery
+            host=redis_host or getenv("REDIS_SERVICE_HOST", "localhost"),
+            port=redis_port or getenv("REDIS_SERVICE_PORT", "6379"),
+            db=redis_db or 1,  # 0 is used by Celery
+            password=redis_password or getenv("REDIS_PASSWORD"),
             decode_responses=True,
         )
         self.hash = hash_name
